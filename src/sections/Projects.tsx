@@ -31,7 +31,7 @@ const projects = [
         description: 'Designed a responsive personal branding site showcasing technical strengths and optimized for cross-device compatibility.',
         image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop',
         tech: ['HTML', 'CSS', 'React', 'Responsive Design'],
-        github: '#',
+        github: 'https://github.com/FBB1032/My-Portfolio.git',
     },
     {
         title: 'Weather Dashboard',
