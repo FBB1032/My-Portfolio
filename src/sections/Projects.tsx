@@ -1,45 +1,48 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
 import { cn } from '../utils/cn';
+import ProjectCard3D from '../components/ProjectCard3D';
+import ProjectModal from '../components/ProjectModal';
 
 // Asset Imports
-import healthyBuddyImg from '../assets/WhatsApp Image 2026-02-14 at 10.03.15.jpeg';
+// Images are served from the `public/` folder; use absolute public paths
+
+
 
 const categories = ['All', 'Frontend', 'Fullstack'];
 
 const projects = [
     {
-        title: 'Healthy Buddy',
+        title: 'Meora - AI Healthcare Platform',
         category: 'Fullstack / AI',
         description: 'An AI-powered healthcare platform providing personalized prescriptions, triage, and connection to verified doctors, clinics, and pharmacies.',
-        image: healthyBuddyImg,
+        image: '/Medora.jpeg',
         tech: ['React Native', 'JavaScript', 'TypeScript', 'Expo'],
         github: 'https://github.com/FBB1032/HealthyBuddy.git',
     },
     {
         title: 'SiF Submit Platform',
-        category: 'Frontend',
+        category: 'Fullstack',
         description: 'Built a modular frontend for a website submission platform using reusable components and scalable architecture.',
-        image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1000&auto=format&fit=crop',
+        image: '/SIF.png',
         tech: ['React', 'JavaScript', 'CSS', 'Modular Architecture'],
         github: 'https://github.com/FBB1032/SIF.git',
     },
     {
-        title: 'Personal Portfolio',
-        category: 'Frontend',
-        description: 'Designed a responsive personal branding site showcasing technical strengths and optimized for cross-device compatibility.',
+        title: 'Eduvora - Learning Platform',
+        category: 'Fullstack/AI',
+        description: 'Eduvora is a full-stack, mobile-first learning platform for Nigerian secondary and tertiary students.',
         image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop',
-        tech: ['HTML', 'CSS', 'React', 'Responsive Design'],
-        github: 'https://github.com/FBB1032/My-Portfolio.git',
+        tech: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'Expo'],
+        github: 'https://github.com/FBB1032/Eduvora.git',
     },
     {
-        title: 'Weather Dashboard',
-        category: 'Frontend',
-        description: 'Integrated real-time weather API with dynamic UI rendering and asynchronous data handling.',
-        image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=1000&auto=format&fit=crop',
-        tech: ['JavaScript', 'External API', 'Async/Await'],
-        github: '#',
+        title: 'Amana Campus Node',
+        category: 'Fullstack/AI',
+        description: 'Amana Campus Node is an offline-first kiosk console powered by Gemma 4 (gemma4:e2b) running locally via Ollama. It converts unstructured student inputs multilingual voice dictation (English, Hausa, Pidgin), plain text, or scanned ID credentials into deterministically routed, perfectly formatted official PDF letters with zero cloud API dependency, zero server latency, and ₦0 internet data cost.',
+        image: '/Amana.jpeg',
+        tech: ['JavaScript', 'External API', 'Async/Await', 'Offline-First', 'AI', 'Expo', 'React Native'],
+        github: 'https://github.com/FBB1032/Amana_Node',
     },
     {
         title: 'Aduke Empire',
@@ -54,10 +57,9 @@ const projects = [
 
 export const Projects = () => {
     const [activeCategory, setActiveCategory] = useState('All');
+    const [selected, setSelected] = useState<any | null>(null);
 
-    const filteredProjects = projects.filter(
-        (p) => activeCategory === 'All' || p.category === activeCategory
-    );
+    const filteredProjects = projects.filter((p) => activeCategory === 'All' || p.category === activeCategory);
 
     return (
         <section id="projects" className="py-32 px-6 bg-background/50">
@@ -99,55 +101,14 @@ export const Projects = () => {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.4 }}
-                                className="group relative glass-card overflow-hidden"
                             >
-                                <div className="aspect-video overflow-hidden">
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-80" />
-                                </div>
-
-                                <div className="p-8 relative">
-                                    <div className="flex items-center justify-between mb-4">
-                                        <span className="text-xs font-bold text-primary tracking-widest uppercase">
-                                            {project.category}
-                                        </span>
-                                        <div className="flex gap-4">
-                                            <a href={project.github} className="text-white/40 hover:text-white transition-colors">
-                                                <Github className="w-5 h-5" />
-                                            </a>
-                                            <a href={project.live} className="text-white/40 hover:text-white transition-colors">
-                                                <ExternalLink className="w-5 h-5" />
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                                        {project.title}
-                                    </h3>
-                                    <p className="text-white/60 mb-6 line-clamp-2">
-                                        {project.description}
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tech.map((t) => (
-                                            <span
-                                                key={t}
-                                                className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] font-bold text-white/50 uppercase tracking-tighter"
-                                            >
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
+                                <ProjectCard3D project={project} onClick={() => setSelected(project)} />
                             </motion.div>
                         ))}
                     </AnimatePresence>
                 </motion.div>
             </div>
+            <ProjectModal project={selected} onClose={() => setSelected(null)} />
         </section>
     );
 };

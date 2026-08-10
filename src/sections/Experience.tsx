@@ -15,7 +15,7 @@ export const Experience = () => {
                         </div>
                     </div>
                     <div className="glass-card p-8 flex flex-col md:flex-row gap-6 opacity-80">
-                        <div className="min-w-[200px] text-primary font-semibold italic">2019 - 2022</div>
+                        <div className="min-w-[200px] text-primary font-semibold italic">Completed 2022</div>
                         <div>
                             <h3 className="text-xl font-bold mb-2">Diploma — Computer Engineering</h3>
                             <p className="text-white/40 mb-4">Ahmadu Bello University, Zaria</p>

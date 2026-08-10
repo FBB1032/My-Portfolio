@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { User, Code, Palette, Zap } from 'lucide-react';
+import Portrait3D from '../components/Portrait3D';
 
 const stats = [
-    { label: 'Academic Years', value: '4th', icon: Zap },
+    { label: 'Academic Years', value: '5th', icon: Zap },
     { label: 'Technical Skills', value: '15+', icon: User },
     { label: 'Practical Projects', value: '9+', icon: Code },
     { label: 'Certifications', value: '5+', icon: Palette },
@@ -10,7 +11,7 @@ const stats = [
 
 const skillCategories = [
     {
-        title: 'Frontend & 3D',
+        title: 'Frontend & UI/UX',
         skills: [
             { name: 'React / Next.js', level: 80 },
             { name: 'Tailwind CSS', level: 90 },
@@ -41,16 +42,22 @@ export const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                            Bridging Tech & <br />
-                            <span className="text-gradient">User-Centric Design.</span>
-                        </h2>
-                        <p className="text-white/60 text-lg mb-8 leading-relaxed text-justify">
-                            Frontend-focused developer experienced in building responsive interfaces and integrating backend services. Strong interest in scalable UI architecture, performance optimization, and modern development workflows.
-                        </p>
-                        <p className="text-white/60 text-lg mb-12 leading-relaxed text-justify">
-                            Currently pursuing a B.Eng in Computer Engineering at Ahmadu Bello University, I combine academic rigor with hands-on project experience to deliver impactful web solutions.
-                        </p>
+                        <div className="flex items-start gap-8 mb-8">
+                            <div>
+                                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                                    Bridging Tech & <br />
+                                    <span className="text-gradient">User-Centric Design.</span>
+                                </h2>
+                                <p className="text-white/60 text-lg mb-6 leading-relaxed text-justify">
+                                    Frontend focused developer experienced in building responsive interfaces and integrating backend services. Strong interest in scalable UI architecture, performance optimization, and modern development workflows.
+                                </p>
+                                <p className="text-white/60 text-lg mb-6 leading-relaxed text-justify">
+                                    Currently pursuing a B.Eng in Computer Engineering at Ahmadu Bello University, I combine academic rigor with hands-on project experience to deliver impactful web solutions.
+                                </p>
+                            </div>
+
+                            
+                        </div>
 
                         <div className="grid grid-cols-2 gap-6">
                             {stats.map((stat, index) => (
@@ -88,7 +95,7 @@ export const About = () => {
                                                     initial={{ width: 0 }}
                                                     whileInView={{ width: `${skill.level}%` }}
                                                     viewport={{ once: true }}
-                                                    transition={{ duration: 1.5, delay: 0.5 + (skillIndex * 0.1), ease: "circOut" }}
+                                                    transition={{ duration: 1.5, delay: 0.5 + (skillIndex * 0.1), ease: 'circOut' }}
                                                     className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
                                                 />
                                             </div>
