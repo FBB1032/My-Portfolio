@@ -1,15 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
-
-type Project = {
-    title: string;
-    category: string;
-    description: string;
-    image: string;
-    tech: string[];
-    github?: string;
-    live?: string;
-};
+import type { Project } from './ProjectModal';
 
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 
@@ -117,12 +108,24 @@ const ProjectCard3D: React.FC<{ project: Project; onClick?: () => void }> = ({ p
                         </span>
                         <div className="flex gap-4">
                             {project.github && (
-                                <a href={project.github} className="text-white/40 hover:text-white transition-colors">
+                                <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="text-white/40 hover:text-white transition-colors"
+                                >
                                     <Github className="w-5 h-5" />
                                 </a>
                             )}
                             {project.live && (
-                                <a href={project.live} className="text-white/40 hover:text-white transition-colors">
+                                <a
+                                    href={project.live}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="text-white/40 hover:text-white transition-colors"
+                                >
                                     <ExternalLink className="w-5 h-5" />
                                 </a>
                             )}
