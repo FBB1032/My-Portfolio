@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Projects } from './sections/Projects';
+import { Achievements } from './sections/Achievements';
 import { Experience } from './sections/Experience';
 import { TechStack } from './sections/TechStack';
 import { Contact } from './sections/Contact';
@@ -30,16 +31,18 @@ function App() {
 
       <Navbar />
       <main>
+        {/* Recruiter-Optimized Section Flow */}
         <Hero />
-        <About />
         <Projects />
-        <Experience />
+        <Achievements />
+        <About />
         <TechStack />
+        <Experience />
         <Contact />
       </main>
       <footer className="py-12 text-center text-sm text-white/20 border-t border-white/5 bg-background">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p>&copy; {new Date().getFullYear()} Fahd's Portfolio. Designed for excellence.</p>
+          <p>&copy; {new Date().getFullYear()} Fahd Badamasi. Engineered for high impact.</p>
         </div>
       </footer>
     </div>

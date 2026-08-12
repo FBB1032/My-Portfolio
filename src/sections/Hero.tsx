@@ -16,8 +16,8 @@ export const Hero = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium glass-card text-primary border-primary/20">
-                                Available for new opportunities
+                            <span className="inline-block px-4 py-1.5 mb-6 text-xs sm:text-sm font-semibold glass-card text-primary border-primary/20 rounded-full tracking-wide">
+                                Available for Frontend & Mobile Engineering Opportunities
                             </span>
                         </motion.div>
 
@@ -25,49 +25,45 @@ export const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.15 }}
-                            className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 leading-tight"
+                            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white"
                         >
-                            FAHD <span className="text-gradient">BADAMASI</span>
+                            Frontend Developer Building <span className="text-gradient">Practical Digital Products</span>
                         </motion.h1>
 
-                        <motion.h2
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.25 }}
-                            className="text-lg md:text-xl font-semibold text-white/80 mb-6"
+                            className="space-y-4 mb-8 max-w-2xl text-base sm:text-lg text-white/80 leading-relaxed"
                         >
-                            Frontend & Full-Stack Developer  crafting performant, accessible experiences.
-                        </motion.h2>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.35 }}
-                            className="text-base md:text-lg text-white/60 mb-8 max-w-xl leading-relaxed"
-                        >
-                            I build delightful interfaces using React, TypeScript, and Tailwind optimized for real users and production-ready performance. Currently studying Computer Engineering at Ahmadu Bello University.
-                        </motion.p>
+                            <p>
+                                I'm <strong className="text-white font-semibold">Fahd Badamasi</strong>, a frontend developer (expanding into full-stack development) focused on building modern, responsive web and mobile applications with <strong className="text-white font-semibold">React, Next.js, TypeScript, and React Native</strong>.
+                            </p>
+                            <p className="text-white/60">
+                                I turn ideas into functional digital products, from AI-powered applications to fintech, healthcare, and other real-world solutions.
+                            </p>
+                        </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.55 }}
-                            className="flex flex-wrap gap-4"
+                            transition={{ duration: 0.5, delay: 0.45 }}
+                            className="flex flex-wrap items-center gap-4"
                         >
                             <a
                                 href="#projects"
                                 aria-label="View my projects"
-                                className="px-6 py-3 bg-primary text-white rounded-lg font-semibold flex items-center gap-2 hover:bg-primary/95 transition-colors group"
+                                className="px-6 py-3.5 bg-primary text-white rounded-xl font-semibold flex items-center gap-2 hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 group"
                             >
-                                View My Work
+                                View My Projects
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </a>
                             <a
                                 href="#contact"
-                                aria-label="Contact me"
-                                className="px-6 py-3 glass-card text-white rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center gap-2"
+                                aria-label="Let's work together"
+                                className="px-6 py-3.5 glass-card text-white rounded-xl font-semibold hover:bg-white/10 transition-all border border-white/15 flex items-center gap-2"
                             >
-                                Contact Me
+                                Let's Work Together
                             </a>
                         </motion.div>
                     </div>

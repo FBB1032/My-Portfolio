@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, X, CheckCircle2, Layers, Cpu, Code2 } from 'lucide-react';
+import { Github, ExternalLink, X, CheckCircle2, AlertTriangle, Lightbulb, UserCheck, HelpCircle, Rocket, Code2 } from 'lucide-react';
 
 export type Project = {
     title: string;
     category: string;
+    oneLiner: string;
     description: string;
-    longDescription?: string;
-    features?: string[];
-    role?: string;
+    problem: string;
+    solution: string;
+    myRole: string;
+    features: string[];
+    challenges: string;
+    whatILearned: string;
     image: string;
     tech: string[];
     github?: string;
@@ -62,7 +66,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                        className="relative z-10 w-full max-w-4xl max-h-[85vh] sm:max-h-[90vh] glass-card p-6 sm:p-8 rounded-3xl overflow-y-auto custom-scrollbar border border-white/15 bg-background/95 shadow-2xl my-auto"
+                        className="relative z-10 w-full max-w-4xl max-h-[88vh] glass-card p-6 sm:p-8 rounded-3xl overflow-y-auto custom-scrollbar border border-white/15 bg-background/95 shadow-2xl my-auto"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Sticky Close Icon */}
@@ -75,27 +79,24 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                         </button>
 
                         <div className="flex flex-col gap-6">
-                            {/* Title & Metadata */}
+                            {/* Header: Title & One-Liner */}
                             <div>
                                 <div className="flex flex-wrap items-center gap-3 mb-2">
                                     <span className="px-3 py-1 bg-primary/10 border border-primary/30 rounded-full text-xs font-semibold text-primary uppercase tracking-wider">
                                         {project.category}
                                     </span>
-                                    {project.role && (
-                                        <span className="text-xs text-white/60 border border-white/10 px-3 py-1 rounded-full bg-white/5">
-                                            {project.role}
-                                        </span>
-                                    )}
                                 </div>
-                                <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight pr-10">
+                                <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight pr-10 mb-2">
                                     {project.title}
                                 </h2>
+                                <p className="text-sm sm:text-base font-medium text-primary/90 italic">
+                                    "{project.oneLiner}"
+                                </p>
                             </div>
 
-                            {/* Image & Description */}
-                            <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-                                {/* Image Container */}
-                                <div className="md:col-span-6 rounded-2xl overflow-hidden border border-white/10 relative aspect-video md:aspect-auto h-56 md:h-full bg-white/5">
+                            {/* Image Header & Quick Action Buttons */}
+                            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                                <div className="md:col-span-8 rounded-2xl overflow-hidden border border-white/10 relative h-48 sm:h-56 bg-white/5">
                                     {project.image && project.image.startsWith('/') && /\.(jpe?g|png)$/i.test(project.image) ? (
                                         <picture>
                                             <source srcSet={project.image.replace(/\.(jpe?g|png)$/i, '.webp')} type="image/webp" />
@@ -113,57 +114,84 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                                             className="w-full h-full object-cover"
                                         />
                                     )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-40 pointer-events-none" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-50 pointer-events-none" />
                                 </div>
 
-                                {/* Overview & Links */}
-                                <div className="md:col-span-6 flex flex-col justify-between space-y-4">
-                                    <div>
-                                        <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-2 flex items-center gap-2">
-                                            <Layers className="w-4 h-4 text-primary" /> Project Overview
-                                        </h3>
-                                        <p className="text-white/80 leading-relaxed text-sm sm:text-base">
-                                            {project.longDescription || project.description}
-                                        </p>
-                                    </div>
-
-                                    {/* Links */}
-                                    <div className="flex flex-wrap items-center gap-3 pt-2">
-                                        {project.github && (
-                                            <a
-                                                href={project.github}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm transition-all border border-white/10 hover:border-white/20"
-                                            >
-                                                <Github className="w-4 h-4" /> View Source Code
-                                            </a>
-                                        )}
-                                        {project.live && (
-                                            <a
-                                                href={project.live}
-                                                target="_blank"
-                                                rel="noreferrer"
-                                                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary hover:bg-primary/80 text-white font-medium text-sm transition-all shadow-lg shadow-primary/25"
-                                            >
-                                                <ExternalLink className="w-4 h-4" /> Live Demo
-                                            </a>
-                                        )}
+                                <div className="md:col-span-4 flex flex-col justify-center space-y-3">
+                                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                        <div className="text-xs uppercase font-mono text-white/40 mb-1">Quick Links</div>
+                                        <div className="flex flex-col gap-2.5">
+                                            {project.github && (
+                                                <a
+                                                    href={project.github}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm transition-all border border-white/10"
+                                                >
+                                                    <Github className="w-4 h-4" /> View GitHub Repository
+                                                </a>
+                                            )}
+                                            {project.live ? (
+                                                <a
+                                                    href={project.live}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary hover:bg-primary/80 text-white font-semibold text-xs sm:text-sm transition-all shadow-lg shadow-primary/25"
+                                                >
+                                                    <ExternalLink className="w-4 h-4" /> Open Live Demo
+                                                </a>
+                                            ) : (
+                                                <div className="text-center text-xs text-white/40 italic py-1">
+                                                    Source Code Available on GitHub
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Features Section */}
-                            {project.features && project.features.length > 0 && (
-                                <div className="pt-4 border-t border-white/10">
-                                    <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-3 flex items-center gap-2">
-                                        <Cpu className="w-4 h-4 text-primary" /> Key Features & Capabilities
+                            {/* Section: My Role (Highlighted) */}
+                            <div className="p-5 rounded-2xl bg-primary/10 border border-primary/30">
+                                <h3 className="text-sm font-bold uppercase tracking-wider text-primary mb-2 flex items-center gap-2">
+                                    <UserCheck className="w-4 h-4" /> My Role & Contributions
+                                </h3>
+                                <p className="text-white/90 text-sm leading-relaxed font-medium">
+                                    {project.myRole}
+                                </p>
+                            </div>
+
+                            {/* Problem & Solution Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
+                                    <h3 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-2">
+                                        <HelpCircle className="w-4 h-4 text-amber-400" /> The Problem
                                     </h3>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
+                                        {project.problem}
+                                    </p>
+                                </div>
+
+                                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
+                                    <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2 flex items-center gap-2">
+                                        <Rocket className="w-4 h-4 text-emerald-400" /> The Solution
+                                    </h3>
+                                    <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
+                                        {project.solution}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Key Features */}
+                            {project.features && project.features.length > 0 && (
+                                <div className="pt-2">
+                                    <h3 className="text-xs font-bold uppercase tracking-wider text-white/50 mb-3 flex items-center gap-2">
+                                        <CheckCircle2 className="w-4 h-4 text-primary" /> Key Features
+                                    </h3>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                         {project.features.map((feature, idx) => (
                                             <div
                                                 key={idx}
-                                                className="flex items-start gap-2.5 p-3 rounded-xl bg-white/[0.03] border border-white/5 text-sm text-white/80"
+                                                className="flex items-start gap-2.5 p-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs sm:text-sm text-white/80"
                                             >
                                                 <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                                                 <span>{feature}</span>
@@ -173,16 +201,37 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                                 </div>
                             )}
 
-                            {/* Tech Stack */}
-                            <div className="pt-4 border-t border-white/10">
-                                <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-3 flex items-center gap-2">
-                                    <Code2 className="w-4 h-4 text-primary" /> Technologies & Tools
+                            {/* Technical Challenges & What I Learned */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
+                                    <h3 className="text-xs font-bold uppercase tracking-wider text-rose-400 mb-2 flex items-center gap-2">
+                                        <AlertTriangle className="w-4 h-4 text-rose-400" /> Technical Challenges
+                                    </h3>
+                                    <p className="text-white/70 text-xs sm:text-sm leading-relaxed">
+                                        {project.challenges}
+                                    </p>
+                                </div>
+
+                                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
+                                    <h3 className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2 flex items-center gap-2">
+                                        <Lightbulb className="w-4 h-4 text-cyan-400" /> What I Learned
+                                    </h3>
+                                    <p className="text-white/70 text-xs sm:text-sm leading-relaxed">
+                                        {project.whatILearned}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Tech Stack Used */}
+                            <div className="pt-2">
+                                <h3 className="text-xs font-bold uppercase tracking-wider text-white/50 mb-3 flex items-center gap-2">
+                                    <Code2 className="w-4 h-4 text-primary" /> Technologies Used
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {project.tech.map((t) => (
                                         <span
                                             key={t}
-                                            className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-semibold text-white/70 hover:text-white hover:border-white/20 transition-colors uppercase tracking-wider"
+                                            className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-semibold text-white/80 uppercase tracking-wider"
                                         >
                                             {t}
                                         </span>
@@ -208,4 +257,3 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 };
 
 export default ProjectModal;
-
