@@ -39,11 +39,7 @@ function App() {
       </main>
       <footer className="py-12 text-center text-sm text-white/20 border-t border-white/5 bg-background">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p>&copy; {new Date().getFullYear()} Elite Portfolio. Designed for excellence.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-          </div>
+          <p>&copy; {new Date().getFullYear()} Fahd's Portfolio. Designed for excellence.</p>
         </div>
       </footer>
     </div>
