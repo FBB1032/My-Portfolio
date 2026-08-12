@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 import { User, Code, Palette, Zap } from 'lucide-react';
-import Portrait3D from '../components/Portrait3D';
 
 const stats = [
     { label: 'Academic Years', value: '5th', icon: Zap },
-    { label: 'Technical Skills', value: '15+', icon: User },
+    { label: 'Technical Skills', value: '10+', icon: User },
     { label: 'Practical Projects', value: '9+', icon: Code },
     { label: 'Certifications', value: '5+', icon: Palette },
 ];
@@ -23,7 +22,7 @@ const skillCategories = [
     {
         title: 'AI & Backend (still Growing)',
         skills: [
-            { name: 'AI Integration (OpenAI/LangChain)', level: 50 },
+            { name: 'AI Integration (OpenAI/LangChain) ETC', level: 50 },
             { name: 'Computer Vision Basics', level: 50 },
             { name: 'Node.js / Express', level: 30 },
             { name: 'System Design', level: 65 },
@@ -56,7 +55,7 @@ export const About = () => {
                                 </p>
                             </div>
 
-                            
+
                         </div>
 
                         <div className="grid grid-cols-2 gap-6">
