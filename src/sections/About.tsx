@@ -4,7 +4,7 @@ import { User, Code, Palette, Zap } from 'lucide-react';
 const stats = [
     { label: 'Academic Years', value: '5th', icon: Zap },
     { label: 'Technical Skills', value: '10+', icon: User },
-    { label: 'Practical Projects', value: '9+', icon: Code },
+    { label: 'Practical Projects', value: '20+', icon: Code },
     { label: 'Certifications', value: '5+', icon: Palette },
 ];
 
