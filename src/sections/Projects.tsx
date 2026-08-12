@@ -59,8 +59,8 @@ const projects: Project[] = [
         title: 'Amana Campus Node',
         category: 'Fullstack / AI',
         role: 'AI & Edge Systems Engineer',
-        description: 'Amana Campus Node is an offline-first kiosk console powered by Gemma 4 running locally via Ollama. It converts unstructured student inputs into official PDF letters with zero cloud cost.',
-        longDescription: 'Amana Campus Node is an offline-first kiosk console powered by Gemma 4 (gemma4:e2b) running locally via Ollama. It converts unstructured student inputs—multilingual voice dictation (English, Hausa, Pidgin), plain text, or scanned ID credentials—into deterministically routed, perfectly formatted official PDF letters with zero cloud API dependency, zero server latency, and ₦0 internet data cost.',
+        description: 'Amana Campus Node is an offline first kiosk console powered by Gemma 4 running locally via Ollama. It converts unstructured student inputs into official PDF letters with zero cloud cost.',
+        longDescription: 'Amana Campus Node is an offline-first kiosk console powered by Gemma 4 (gemma4:e2b) running locally via Ollama. It converts unstructured student inputs multilingual voice dictation (English, Hausa, Pidgin), plain text, or scanned ID credentials into deterministically routed, perfectly formatted official PDF letters with zero cloud API dependency, zero server latency, and ₦0 internet data cost.',
         features: [
             'Local LLM Inference with Gemma 4 (gemma4:e2b) via Ollama',
             'Multilingual Voice Dictation (English, Hausa, Pidgin)',
