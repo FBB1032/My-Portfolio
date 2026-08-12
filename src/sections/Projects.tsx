@@ -51,7 +51,6 @@ const projects = [
         image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1000&auto=format&fit=crop',
         tech: ['React', 'Supabase', 'Express', 'Full Stack'],
         github: 'https://github.com/FBB1032/Aduke-Empire.git',
-        live: '#',
     },
 ];
 
