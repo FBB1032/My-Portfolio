@@ -26,7 +26,7 @@ export const Contact = () => {
                                 <div className="w-10 h-10 rounded-lg glass-card flex items-center justify-center text-primary text-xl">📍</div>
                                 <div>
                                     <div className="text-xs uppercase font-mono tracking-widest text-white/40">Location</div>
-                                    <div className="text-lg font-medium">No. 1 Nabakori, Kabama, Zaria</div>
+                                    <div className="text-lg font-medium">No. 1 Nabakori, Kabama, Zaria, Kaduna State Nigeria </div>
                                 </div>
                             </div>
                         </div>
